@@ -13,7 +13,7 @@ function Shop() {
         <div className="shop-container">
             <div className="product-container">
                 {products.map((product) => (
-                    <Product product={product}></Product>
+                    <Product key={product.key} product={product}></Product>
                 ))}
             </div>
             <div className="cart-container">
