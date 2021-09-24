@@ -1,8 +1,15 @@
 import React from "react";
+import logo from "../../images/logo.png";
+import "./Header.css";
 function Header() {
     return (
-        <div>
-            <h1>Working</h1>
+        <div className="header">
+            <img className="logo" src={logo} alt="Logo" />
+            <nav>
+                <a href="/Shop">Shop</a>
+                <a href="/Order">Order Review</a>
+                <a href="/inventory">Manage Inventory</a>
+            </nav>
         </div>
     );
 }
