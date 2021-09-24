@@ -5,7 +5,7 @@ const Product = (props) => {
     const { name, img, price, stock, seller, star } = props.product;
     return (
         <div className="product">
-            <img src={img} alt="product image" />
+            <img src={img} alt="" />
             <div className="product-details">
                 <h4 className="name">{name}</h4>
                 <p>
