@@ -10,7 +10,10 @@ function Shop() {
     useEffect(() => {
         fetch("./products.json")
             .then((res) => res.json())
-            .then((data) => setProduct(data));
+            .then((data) => {
+                setProduct(data);
+                setdisplayProducts(data);
+            });
     }, []);
 
     // add cart product in local storage
