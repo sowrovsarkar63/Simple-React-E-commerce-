@@ -1,4 +1,5 @@
 import React from "react";
+import Rating from "react-rating";
 import "./Product.css";
 const Product = (props) => {
     const { name, img, price, stock, seller, star } = props.product;
@@ -10,7 +11,14 @@ const Product = (props) => {
                 <p>
                     <small>by: {seller}</small>
                 </p>
-                <p>Rating {star}</p>
+                <p>
+                    <Rating
+                        emptySymbol="fa fa-star-o fa-2x"
+                        fullSymbol="fa fa-star fa-2x"
+                        initialRating={star}
+                        readonly
+                    ></Rating>
+                </p>
                 <p>Price: {price}</p>
                 <p>
                     <small>Only {stock} left in stock - Order soon</small>
