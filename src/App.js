@@ -7,6 +7,7 @@ function App() {
         <>
             <header className="app-header">
                 <Header></Header>
+
                 <Shop></Shop>
             </header>
         </>

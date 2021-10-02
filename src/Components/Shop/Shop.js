@@ -6,7 +6,7 @@ import "./Shop.css";
 function Shop() {
     const [products, setProduct] = useState([]);
     const [cart, setcart] = useState([]);
-
+    const [displayProducts, setdisplayProducts] = useState([]);
     useEffect(() => {
         fetch("./products.json")
             .then((res) => res.json())
@@ -42,21 +42,39 @@ function Shop() {
 
         addToDb(product.key);
     };
+
+    const HandleSearch = (e) => {
+        const searchText = e.target.value;
+        const matchedProducts = products.filter((product) =>
+            product.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setdisplayProducts(matchedProducts);
+    };
     return (
-        <div className="shop-container">
-            <div className="product-container">
-                {products.map((product) => (
-                    <Product
-                        key={product.key}
-                        product={product}
-                        handleAddToCart={handleAddToCart}
-                    ></Product>
-                ))}
+        <>
+            <div className="search-container">
+                <input
+                    onChange={HandleSearch}
+                    type="text"
+                    name="search"
+                    id="search"
+                />
             </div>
-            <div className="cart-container">
-                <Cart cart={cart}></Cart>
+            <div className="shop-container">
+                <div className="product-container">
+                    {displayProducts.map((product) => (
+                        <Product
+                            key={product.key}
+                            product={product}
+                            handleAddToCart={handleAddToCart}
+                        ></Product>
+                    ))}
+                </div>
+                <div className="cart-container">
+                    <Cart cart={cart}></Cart>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 export default Shop;

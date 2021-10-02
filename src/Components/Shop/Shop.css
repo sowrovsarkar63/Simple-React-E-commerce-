@@ -9,3 +9,15 @@
 .cart-container {
     margin: 10px;
 }
+
+/* Search form styling  */
+.search-container {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.918);
+    text-align: center;
+}
+.search-container input {
+    width: 50%;
+    margin: 10px;
+    border-radius: 10px;
+}
