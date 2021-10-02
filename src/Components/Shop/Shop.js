@@ -16,13 +16,21 @@ function Shop() {
     // add cart product in local storage
     useEffect(() => {
         const savedCart = getStoredCart();
-        if (savedCart) {
+        const storedCart = [];
+
+        if (products.length) {
             for (const key in savedCart) {
                 const addedProduct = products.find(
                     (product) => product.key === key
                 );
-                console.log(key, addedProduct);
+                if (addedProduct) {
+                    const quantity = savedCart[key];
+                    addedProduct.quantity = quantity;
+                    storedCart.push(addedProduct);
+                }
             }
+
+            setcart(storedCart);
         }
     }, [products]);
 

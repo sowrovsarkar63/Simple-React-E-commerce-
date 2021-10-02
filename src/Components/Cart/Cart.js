@@ -3,9 +3,14 @@ import React from "react";
 function Cart(props) {
     const { cart } = props;
     let total = 0;
+    let totalQuantity = 0;
 
     for (const product of cart) {
-        total = total + product.price;
+        if (!product.quantity) {
+            product.quantity = 1;
+        }
+        totalQuantity = totalQuantity + product.quantity;
+        total = total + product.price * totalQuantity;
     }
     const shiping = total > 0 ? 15 : 0;
     const tax = (total + shiping) * 0.1;
@@ -13,7 +18,7 @@ function Cart(props) {
     return (
         <div>
             <h1>Order summary</h1>
-            <h3>Items Ordered {props.cart.length}</h3>
+            <h3>Items Ordered {totalQuantity}</h3>
 
             <br />
             <p>Total: {total.toFixed(2)}</p>
